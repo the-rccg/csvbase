@@ -24,9 +24,9 @@ def get_hierarchy(path):
 
 
 def get_contents(path):
-    """give filtered contents of a path"""
+    """give filtered contents of a path with folders first"""
     cont = os.listdir(path)
-    cont = [i for i in cont if "__" not in i]
+    cont = [i for i in cont if i[0] not in {".", "_"}]
     cont = [i for i in cont if "." not in i] + sorted([i for i in cont if "." in i])
     return cont
 
