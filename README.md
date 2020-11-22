@@ -9,6 +9,7 @@ None of the commitment of a database.
 * Human readable data storage (duh it's CSVs)
 * Trivial interoperability (it's CSVs)
 * No technical knowledge required
+* Allows querying with SQL!
 
 ## Drawbacks
 
