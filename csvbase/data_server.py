@@ -12,18 +12,18 @@ def home():
     output = f"<h1>home data directory</h1>"
     output += str(
         ulify([make_url(request.base_url, f) for f in get_contents(os.getcwd())])
-    )  # str(get_hierarchy(os.getcwd()))
+    )
     return output
 
 
 # @app.route("/", defaults={"req_path": ""})
 # @app.route("/<path:req_path>")
-def dir_listing(req_path):
+def dir_listing(base_dir, req_path):
     """dynamic routing to allow the exploration of subdirectories"""
     # https://stackoverflow.com/questions/23718236/python-flask-browsing-through-directory-with-files
 
     # Joining the base and the requested path
-    abs_path = os.path.join(BASE_DIR, req_path)
+    abs_path = os.path.join(base_dir, req_path)
 
     # Return 404 if path doesn't exist
     if not os.path.exists(abs_path):
@@ -38,6 +38,9 @@ def dir_listing(req_path):
     output += str(
         ulify([make_url(request.base_url, f) for f in get_contents(abs_path)])
     )
+    back = request.base_url.rstrip("/")
+    back = back[: back.rfind("/")]
+    output += "<br>" + make_url(back, "Back")
     return output  # render_template('files.html', files=files)
 
 
