@@ -49,7 +49,10 @@ def sql(query=""):
     else:
         return "Error: No query provided. Please specify a SQL Query."
 
-    # Example "csvsql --query \"select Open from 'AAPL' where Open > 400\" Marketdata/YahooFinance/AAPL.csv"
-    data = subprocess.check_output(f"csvsql --query {query}", shell=True)
+    if "--help" in query:
+        return subprocess.check_output(f"csvsql --help", shell=True)
+    else:
+        # Example "csvsql --query \"select Open from 'AAPL' where Open > 400\" Marketdata/YahooFinance/AAPL.csv"
+        data = subprocess.check_output(f"csvsql --query {query}", shell=True)
 
     return data
