@@ -20,11 +20,11 @@ from .data_server import *
     help="Directory to be mapped",
 )
 @click.option("--debug/--no-debug", default=False)
-def main(port, dir, debug):
-    if dir is None:
+def main(port, directory, debug):
+    if directory is None:
         BASE_DIR = os.getcwd()
     else:
-        BASE_DIR = dir
+        BASE_DIR = directory
 
     app = Flask(__name__)
     app.config["DEBUG"] = debug

@@ -19,14 +19,14 @@ None of the commitment of a database.
 
 * Asynchronous parallel querying of CSVs?
 
-# Usage
+## Installation and usage
 
 Install via `pip install .` in the directory.
 
 Run simply as e.g. `csvbase --port=5000 --debug` in the repository you like.
 
-## Flags
+### Flags
 
 * port (int): port to run the flask server on
-* dir (string): directory to map if not the current work directory
+* directory (string): directory path to map if not the current work directory
 * debug (boolean): run flask server in debug mode or not
