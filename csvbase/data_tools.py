@@ -1,9 +1,6 @@
 import os
 
 
-BASE_PATH = ""
-
-
 def get_hierarchy(path):
     """return a nested hierarchy for a directory including dictionaries of subdirectories and lists of files"""
 

@@ -1,15 +1,12 @@
 from flask import Flask, request, send_file, abort
 import subprocess
-from data_tools import *
-
-BASE_DIR = os.getcwd()
+from .data_tools import *
 
 
-app = Flask(__name__)
-app.config["DEBUG"] = True
+# app = Flask(__name__)
+# app.config["DEBUG"] = True
 
-
-@app.route("/", methods=["GET"])
+# @app.route("/", methods=["GET"])
 def home():
     """provide the homedirectory index to browse"""
     output = f"<h1>home data directory</h1>"
@@ -19,8 +16,8 @@ def home():
     return output
 
 
-@app.route("/", defaults={"req_path": ""})
-@app.route("/<path:req_path>")
+# @app.route("/", defaults={"req_path": ""})
+# @app.route("/<path:req_path>")
 def dir_listing(req_path):
     """dynamic routing to allow the exploration of subdirectories"""
     # https://stackoverflow.com/questions/23718236/python-flask-browsing-through-directory-with-files
@@ -44,7 +41,7 @@ def dir_listing(req_path):
     return output  # render_template('files.html', files=files)
 
 
-@app.route("/SQL", defaults={"query": ""}, methods=["GET"])
+# @app.route("/SQL", defaults={"query": ""}, methods=["GET"])
 def sql(query=""):
     """provide a SQL endpoint to query the files"""
     if "query" in request.args:
@@ -56,6 +53,3 @@ def sql(query=""):
     data = subprocess.check_output(f"csvsql --query {query}", shell=True)
 
     return data
-
-
-app.run()

@@ -15,10 +15,18 @@ None of the commitment of a database.
 
 * None of the performance gains of databases
 
-## Mitigations
+## Mitigation
 
 * Asynchronous parallel querying of CSVs?
 
 # Usage
 
-Run the `data_server.py` in the directory to be mapped. That's it. Enjoy.
+Install via `pip install .` in the directory.
+
+Run simply as e.g. `csvbase --port=5000 --debug` in the repository you like.
+
+## Flags
+
+* port (int): port to run the flask server on
+* dir (string): directory to map if not the current work directory
+* debug (boolean): run flask server in debug mode or not
